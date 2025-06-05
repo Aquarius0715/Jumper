@@ -1,12 +1,12 @@
 package com.example.jumper.model;
 
-public class MovingPlatform extends Platform{
+public class MovingPlatform extends Platform {
     private final int xSpeed;
     private boolean vector = true;
 
     public MovingPlatform() {
-        super.setX(50);
-        super.setY(700);
+        x = 50;
+        y = 700;
         xSpeed = 2;
     }
     

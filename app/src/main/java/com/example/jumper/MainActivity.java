@@ -114,14 +114,13 @@ public class MainActivity extends BaseActivity {
         //-----------
         // Create Player Instance
         //-----------
-        player = new Player();
+        player = new Player(this);
         platform = new Platform();
         movingPlatform = new MovingPlatform();
         brokenPlatform = new BrokenPlatform();
         coin = new Coin();
         castle = new Castle();
         ufo = new UFO();
-
     }
 
     @Override
@@ -196,8 +195,8 @@ public class MainActivity extends BaseActivity {
         drawImage(
                 coin.getX(),
                 coin.getY(),
-                coin.getxSize(),
-                coin.getySize(),
+                coin.getXSize(),
+                coin.getYSize(),
                 coinImage,
                 coinImageView
         );
@@ -205,8 +204,8 @@ public class MainActivity extends BaseActivity {
         drawImage(
                 castle.getX(),
                 castle.getY(),
-                castle.getxSize(),
-                castle.getySize(),
+                castle.getXSize(),
+                castle.getYSize(),
                 castleImage,
                 castleImageView
         );
@@ -220,8 +219,8 @@ public class MainActivity extends BaseActivity {
         drawImage(
                 ufo.getX(),
                 ufo.getY(),
-                ufo.getxSize(),
-                ufo.getySize(),
+                ufo.getXSize(),
+                ufo.getYSize(),
                 ufoImage,
                 ufoImageView
         );
@@ -253,8 +252,5 @@ public class MainActivity extends BaseActivity {
                 brokenPlatformImage,
                 brokenPlatformImageView
         );
-
-
     }
-
 }

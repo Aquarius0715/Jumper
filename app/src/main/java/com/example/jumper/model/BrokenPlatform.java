@@ -2,12 +2,11 @@ package com.example.jumper.model;
 
 public class BrokenPlatform extends Platform{
     private int timeCount;
-
     private int state;
 
     public BrokenPlatform() {
-        super.setX(50);
-        super.setY(1000);
+        x = 50;
+        y = 1000;
         timeCount = 0;
         state = 0;
     }

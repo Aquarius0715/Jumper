@@ -1,13 +1,18 @@
 package com.example.jumper.model;
 
-public class Player {
-    private int x = 300;
-    private int y = 0;
-    private final int xSize = 96;
-    private final int ySize = 96;
+import com.example.jumper.MainActivity;
+
+public class Player extends Entity {
     private int xSpeed = 3;
     private float ySpeed = 0;
     private boolean jumpFlag = false;
+
+    public Player(MainActivity main) {
+        x = 300;
+        y = 0;
+        xSize = 96;
+        ySize = 96;
+    }
 
     public void move() {
         if (!jumpFlag) {
@@ -37,30 +42,6 @@ public class Player {
         jumpFlag = true;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getXSize() {
-        return xSize;
-    }
-
-    public int getYSize() {
-        return ySize;
-    }
-
     public int getXSpeed() {
         return xSpeed;
     }
@@ -75,13 +56,5 @@ public class Player {
 
     public void setYSpeed(float ySpeed) {
         this.ySpeed = ySpeed;
-    }
-
-    public boolean getJumpFlag() {
-        return jumpFlag;
-    }
-
-    public void setJumpFlag(boolean jumpFlag) {
-        this.jumpFlag = jumpFlag;
     }
 }

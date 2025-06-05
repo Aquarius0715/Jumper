@@ -1,12 +1,15 @@
 package com.example.jumper.model;
 
-public class Coin {
-    private int x = 150;
-    private int y = 450;
-    private int xSize = 75;
-    private int ySize = 75;
+public class Coin extends Entity {
     private int state = 0;
     private int countTime = 0;
+
+    public Coin() {
+        x = 150;
+        y = 450;
+        xSize = 75;
+        ySize = 75;
+    }
 
     public void move() {
         countTime += 1;
@@ -22,21 +25,5 @@ public class Coin {
 
     public int getState() {
         return state;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getxSize() {
-        return xSize;
-    }
-
-    public int getySize() {
-        return ySize;
     }
 }
