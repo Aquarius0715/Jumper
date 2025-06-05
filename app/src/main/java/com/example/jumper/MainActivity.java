@@ -121,6 +121,8 @@ public class MainActivity extends BaseActivity {
         coin = new Coin();
         castle = new Castle();
         ufo = new UFO();
+
+        platform.setPlayer(player);
     }
 
     @Override
@@ -136,6 +138,7 @@ public class MainActivity extends BaseActivity {
         // モデルの更新
         //-----------
         player.move();
+        platform.move();
         movingPlatform.move();
         ufo.move();
         brokenPlatform.move();
