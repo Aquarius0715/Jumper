@@ -6,6 +6,9 @@ public class Player extends Entity {
     private int xSpeed = 3;
     private float ySpeed = 0;
     private boolean jumpFlag = false;
+    private boolean isDead = false;
+    private boolean isClear = false;
+    private int point = 0;
 
     public Player(MainActivity main) {
         x = 300;
@@ -42,6 +45,22 @@ public class Player extends Entity {
         jumpFlag = true;
     }
 
+    public void dead() {
+        isDead = true;
+    }
+
+    public void clear() {
+        isClear = true;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void addPoint(int point) {
+        this.point += point;
+    }
+
     public int getXSpeed() {
         return xSpeed;
     }
@@ -56,5 +75,13 @@ public class Player extends Entity {
 
     public void setYSpeed(float ySpeed) {
         this.ySpeed = ySpeed;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public boolean isClear() {
+        return isClear;
     }
 }

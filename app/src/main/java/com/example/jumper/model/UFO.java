@@ -3,6 +3,7 @@ package com.example.jumper.model;
 public class UFO extends Entity {
     private final int xSpeed = 2;
     private boolean vector = true;
+    private Player player;
 
     public UFO() {
         x = 0;
@@ -22,6 +23,14 @@ public class UFO extends Entity {
         } else {
             x -= xSpeed;
         }
+
+        if (player.getYSpeed() <= 0 && isOverlap(player)) {
+            player.dead();
+        }
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public boolean getVector() {

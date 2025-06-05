@@ -3,6 +3,7 @@ package com.example.jumper.model;
 public class Coin extends Entity {
     private int state = 0;
     private int countTime = 0;
+    Player player;
 
     public Coin() {
         x = 150;
@@ -12,6 +13,9 @@ public class Coin extends Entity {
     }
 
     public void move() {
+        if (state == 10) {
+            return;
+        }
         countTime += 1;
         if (countTime >= 0 && countTime < 10) {
             state = 0;
@@ -21,9 +25,18 @@ public class Coin extends Entity {
             state = 2;
             countTime = 0;
         }
+
+        if (player.getYSpeed() <= 0 && isOverlap(player)) {
+            player.addPoint(10);
+            state = 10;
+        }
     }
 
     public int getState() {
         return state;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

@@ -2,8 +2,10 @@ package com.example.jumper;
 
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -45,6 +47,10 @@ public class MainActivity extends BaseActivity {
     private ImageView coinImageView;
     private ImageView castleImageView;
     private ImageView ufoImageView;
+
+    private TextView gameEndTextView;
+    private TextView gameClearTextView;
+    private TextView pointTextView;
 
     //-----------
     // Models
@@ -103,6 +109,10 @@ public class MainActivity extends BaseActivity {
         castleImageView = new ImageView(this);
         ufoImageView = new ImageView(this);
 
+        gameEndTextView = new TextView(this);
+        gameClearTextView = new TextView(this);
+        pointTextView = new TextView(this);
+
         constraintLayout.addView(playerImageView);
         constraintLayout.addView(platformImageView);
         constraintLayout.addView(movingPlatformImageView);
@@ -110,6 +120,13 @@ public class MainActivity extends BaseActivity {
         constraintLayout.addView(coinImageView);
         constraintLayout.addView(castleImageView);
         constraintLayout.addView(ufoImageView);
+
+        constraintLayout.addView(gameEndTextView);
+        constraintLayout.addView(gameClearTextView);
+        constraintLayout.addView(pointTextView);
+
+        gameEndTextView.setVisibility(TextView.GONE);
+        gameClearTextView.setVisibility(TextView.GONE);
 
         //-----------
         // Create Player Instance
@@ -123,6 +140,11 @@ public class MainActivity extends BaseActivity {
         ufo = new UFO();
 
         platform.setPlayer(player);
+        movingPlatform.setPlayer(player);
+        brokenPlatform.setPlayer(player);
+        ufo.setPlayer(player);
+        castle.setPlayer(player);
+        coin.setPlayer(player);
     }
 
     @Override
@@ -143,10 +165,27 @@ public class MainActivity extends BaseActivity {
         ufo.move();
         brokenPlatform.move();
         coin.move();
+        castle.move();
 
         //-----------
         //　モデルの表示
         //-----------
+
+        if (player.isDead()) {
+            gameEndTextView.setText("Game Over !!");
+            gameEndTextView.setTextSize(32);
+            gameEndTextView.setTextColor(Color.RED);
+            gameEndTextView.setVisibility(TextView.VISIBLE);
+            drawTextViewCenter(350, 750, gameEndTextView);
+        }
+        if (player.isClear()) {
+            gameEndTextView.setText("Game Clear !!");
+            gameEndTextView.setTextSize(32);
+            gameEndTextView.setTextColor(Color.BLUE);
+            gameEndTextView.setVisibility(TextView.VISIBLE);
+            drawTextViewCenter(350, 750, gameEndTextView);
+        }
+
         Bitmap playerImage;
         if (player.getXSpeed() >= 0) {
             playerImage = playerRightImage;
@@ -191,6 +230,8 @@ public class MainActivity extends BaseActivity {
             case 2:
                 coinImage = coin3Image;
                 break;
+            case 10:
+                coinImageView.setVisibility(ImageView.GONE);
             default:
                 coinImage = coin1Image;
 
@@ -203,6 +244,8 @@ public class MainActivity extends BaseActivity {
                 coinImage,
                 coinImageView
         );
+
+
 
         drawImage(
                 castle.getX(),
@@ -255,5 +298,11 @@ public class MainActivity extends BaseActivity {
                 brokenPlatformImage,
                 brokenPlatformImageView
         );
+
+        pointTextView.setText("" + player.getPoint());
+        pointTextView.setTextSize(32);
+        pointTextView.setTextColor(Color.BLUE);
+        drawTextViewRight(700, 1400, pointTextView);
+
     }
 }
