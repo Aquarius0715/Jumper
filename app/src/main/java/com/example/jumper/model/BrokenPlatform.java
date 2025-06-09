@@ -6,9 +6,10 @@ public class BrokenPlatform extends Platform{
     private Player player;
     private boolean isJumped = false;
 
-    public BrokenPlatform() {
-        x = 50;
-        y = 1000;
+    public BrokenPlatform(int initY) {
+        super(initY);
+        //x = 50;
+        //y = 1000;
         timeCount = 0;
         state = 0;
     }

@@ -5,9 +5,9 @@ public class Coin extends Entity {
     private int countTime = 0;
     Player player;
 
-    public Coin() {
-        x = 150;
-        y = 450;
+    public Coin(int initY) {
+        x = (int) (Math.random() * 600);
+        y = initY + (int) (Math.random() * 600 - 300);
         xSize = 75;
         ySize = 75;
     }
@@ -23,10 +23,12 @@ public class Coin extends Entity {
             state = 1;
         } else if (countTime >= 20 && countTime < 30) {
             state = 2;
+        } else if (countTime >= 30 && countTime < 40) {
+            state = 3;
             countTime = 0;
         }
 
-        if (player.getYSpeed() <= 0 && isOverlap(player)) {
+        if (isOverlap(player)) {
             player.addPoint(10);
             state = 10;
         }

@@ -3,9 +3,9 @@ public class Platform extends Entity{
 
     private Player player;
 
-    public Platform() {
-        x = 400;
-        y = 320;
+    public Platform(int initY) {
+        x = (int) (Math.random() * 500);
+        y = initY + (int) (Math.random() * 100 - 50);
         xSize = 192;
         ySize = 42;
     }

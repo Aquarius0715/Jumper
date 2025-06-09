@@ -5,9 +5,9 @@ public class UFO extends Entity {
     private boolean vector = true;
     private Player player;
 
-    public UFO() {
-        x = 0;
-        y = 1100;
+    public UFO(int initY) {
+        x = (int) (Math.random() * 600);
+        y = initY + (int) (Math.random() * 400 - 200);
         xSize = 96;
         ySize = 66;
     }
@@ -24,7 +24,7 @@ public class UFO extends Entity {
             x -= xSpeed;
         }
 
-        if (player.getYSpeed() <= 0 && isOverlap(player)) {
+        if (isOverlap(player)) {
             player.dead();
         }
     }

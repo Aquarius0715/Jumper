@@ -5,6 +5,7 @@ import com.example.jumper.MainActivity;
 public class Player extends Entity {
     private int xSpeed = 3;
     private float ySpeed = 0;
+    private int yMax = 0;
     private boolean jumpFlag = false;
     private boolean isDead = false;
     private boolean isClear = false;
@@ -32,6 +33,10 @@ public class Player extends Entity {
             x = 700;
         }
 
+        if (y > yMax) {
+            yMax = y;
+        }
+
         if (y <= 0) {
             y = 0;
             ySpeed = 0;
@@ -42,6 +47,11 @@ public class Player extends Entity {
 
     public void jump() {
         ySpeed = 10.4f;
+        jumpFlag = true;
+    }
+
+    public void highJump() {
+        ySpeed = 14.0f;
         jumpFlag = true;
     }
 
@@ -75,6 +85,10 @@ public class Player extends Entity {
 
     public void setYSpeed(float ySpeed) {
         this.ySpeed = ySpeed;
+    }
+
+    public int getYMax() {
+        return yMax;
     }
 
     public boolean isDead() {

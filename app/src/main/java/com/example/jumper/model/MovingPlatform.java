@@ -5,9 +5,10 @@ public class MovingPlatform extends Platform {
     private boolean vector = true;
     private Player player;
 
-    public MovingPlatform() {
-        x = 50;
-        y = 700;
+    public MovingPlatform(int initY) {
+        super(initY);
+        //x = 50;
+        //y = 700;
         xSpeed = 2;
     }
 

@@ -5,13 +5,14 @@ public class Castle extends Entity {
 
     public Castle() {
         x = 500;
-        y = 1200;
+        //y = 1200;
+        y = 6500;
         xSize = 192;
         ySize = 192;
     }
 
     public void move() {
-        if (player.getYSpeed() <= 0 && isOverlap(player)) {
+        if (isOverlap(player)) {
             player.clear();
         }
     }
